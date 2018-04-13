@@ -34,6 +34,12 @@ div, span, h1, p, ul, li, a, form, input, button {
 
 @media (min-width: 0px) {
   /****************
+  general
+  */
+  .hidden-mob {
+    display: none;
+  }
+  /****************
   nav
   */
   .nav {
@@ -52,9 +58,13 @@ div, span, h1, p, ul, li, a, form, input, button {
   */
   .l-panel {
     background-color: #162577;
+    background-image: url('./img/bg/main_phone_sm.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: #fff;
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
   .l-panel .panel-wrapper {
     text-align: center;
@@ -69,22 +79,22 @@ div, span, h1, p, ul, li, a, form, input, button {
   .title h1 {
     font-family: 'Poppins', 'Montserrat', 'Avenir', sans-serif;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 42px;
   }
   /* Divider */
   .divider {
     display: block;
-    width: 60px;
-    height: 5px;
-    margin: 20px auto;
-    margin-bottom: 10px;
+    width: 45px;
+    height: 3px;
+    margin: 15px auto;
+    margin-bottom: 5px;
     background-color: #ed1c24;
   }
   /* Subtitle */
   .subtitle {
     display: block;
     padding-top: 15px;
-    line-height: 1.6em;
+    line-height: 1.8em;
   }
   .subtitle p {
     font-size: 14px;
@@ -94,6 +104,8 @@ div, span, h1, p, ul, li, a, form, input, button {
   Right Panel | Btm Panel
   */
   .r-panel {
+    padding-top: 30px;
+    padding-bottom: 60px;
     background-color: #ffffff;
   }
   .r-panel .panel-wrapper {
@@ -102,6 +114,50 @@ div, span, h1, p, ul, li, a, form, input, button {
   }
   #pledge-form {
     display: block;
+    text-align: center;
+  }
+  #pledge-form input {
+    display: inline-block;
+    outline: none;
+    border: none;
+    width: 98%;
+    margin: 0 auto;
+    max-width: 420px;
+    font-family: 'Poppins', 'Montserrat', 'Avenir', sans-serif;
+    font-size: 14px;
+    border: 2px solid #91d9f8;
+    color: #333;
+    padding: 12px 0;
+    padding-left: 12px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+  }
+  #pledge-form input:focus {
+    border-color: #3959a7;
+  }
+  #pledge-form button {
+    background-color: #ed1c24;
+    outline: none;
+    border: none;
+    width: 100%;
+    max-width: 430px;
+    padding: 18px 12px;
+    font-family: 'Poppins', 'Montserrat', 'Avenir', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    border-radius: 5px;
+    margin-top: 6px;
+    transition: box-shadow 0.12s ease, margin 0.12s ease;
+  }
+  #pledge-form button:hover {
+    box-shadow: 2px 0 20px rgba(0,0,0,.5);
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  #pledge-form button.disabled {
+    background-color: #777;
   }
 
   /****************
@@ -118,16 +174,48 @@ div, span, h1, p, ul, li, a, form, input, button {
 } @media (min-width: 720px) {
 
 } @media (min-width: 768px) {
+  /****************
+  Left Panel | Top Panel
+  */
+  .l-panel {
+    background-image: url('./img/bg/main_phone_lg.png');
+    width: 50%;
+    display: inline-block;
+    float: left;
+    height: 95vh;
+  }
+
+  /****************
+  Right Panel | Top Panel
+  */
+  .r-panel {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    height: 95vh;
+  }
 
 } @media (min-width: 850px) {
 
 } @media (min-width: 920px) {
 
 } @media (min-width: 992px) {
+  /****************
+  Left Panel | Top Panel
+  */
+  .l-panel {
+    background-image: url('./img/bg/main_tablet.png');
+  }
 
 } @media (min-width: 1140px) {
 
 } @media (min-width: 1200px) {
+  /****************
+  Left Panel | Top Panel
+  */
+  .l-panel {
+    background-image: url('./img/bg/main_desktop.png');
+  }
 
 } @media (min-width: 1320px) {
 

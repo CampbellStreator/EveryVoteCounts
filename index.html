@@ -48,9 +48,11 @@
           <!-- Subtitle -->
           <div class="subtitle">
             <p>
-              November 2018 will be <span class="bold">critical</span> for our democracy. It is a chance for each of us to express our views and exercise our civic duty in elections across the United States.
-              <br>
-              <br>
+              <span class="hidden-mob">
+                November 2018 will be <span class="bold">critical</span> for our democracy. It is a chance for each of us to express our views and exercise our civic duty in elections across the United States.
+                <br>
+                <br>
+              </span>
               Commit to vote in November, and between now and then, we will make sure you have everything you need to <span class="bold">get registered</span> and <span class="bold">take action</span> in your community.
             </p>
           </div>
@@ -60,7 +62,7 @@
         <!-- Right Panel -->
         <div class="panel-wrapper">
           <div class="vote-form-wrapper">
-            <form id="pledge-form" class="vote-form" action="" method="post">
+            <div id="pledge-form" class="vote-form">
               <div class="input-wrap">
                 <input id="fname" class="half-input" type="text" name="fname" placeholder="First Name">
                 <input id="lname" class="half-input" type="text" name="lname" placeholder="Last Name">
@@ -69,19 +71,82 @@
                 <input id="email" class="full-input" type="text" name="email" placeholder="Email Address">
               </div>
               <div class="input-wrap">
-                <input id="phone" class="full-input" type="tel" name="phone" placeholder="Phone Number">
+                <input id="phone" class="full-input" type="tel" name="phone" placeholder="Phone Number (Optional)">
               </div>
               <div class="btn-wrap">
-                <button id="submit-btn" class="button" type="submit">Commit To Vote</button>
+                <button id="submit-btn" class="button">Commit To Vote &rarr;</button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
+    <script src='./ext/jquery-serialize.js'></script>
+    <script>
+      var $form = $('#pledge-form'),
+      url = 'https://script.google.com/macros/s/AKfycbwC7rrSfKt9ntAYyLL4qm7tVdXf6xknIkdQzPa6uqcVNKEBvdK6/exec'
 
+      $('#pledge-form button').on('click', function(e) {
+        e.preventDefault();
 
-    </div>
+        if (!$(this).hasClass('disabled')) {
+          $(this).addClass('disabled');
+
+          var fname = $('#pledge-form #fname').val(),
+          lname = $('#pledge-form #fname').val(),
+          email = $('#pledge-form #email').val(),
+          phone = $('#pledge-form #phone').val();
+
+          if (validateForm(fname, lname, email)) {
+            var jqxhr = $.ajax({
+              url: url,
+              method: "GET",
+              dataType: "json",
+              data: $form.serializeObject()
+            }).success(function() {
+              alert('Thanks for pledging to vote! We will be in touch shortly with more information!');
+              $('#pledge-form button').text('Thanks for pledging!');
+            }
+            );
+          } else {
+            $(this).removeClass('disabled');
+          }
+        }
+      })
+
+      function validateForm(fname, lname, email) {
+        console.log(fname, lname, email);
+
+        if (!fname || fname.length == 0 || fname == '') {
+          alert('First name is required');
+          $('#pledge-form #fname').addClass('err');
+          return false;
+        } else {
+          console.log('fname checks')
+        }
+
+        if (!lname || lname.length == 0 || lname == '') {
+          alert('Last name is required');
+          $('#pledge-form #lname').addClass('err');
+          return false;
+        } else {
+          console.log('lname checks')
+        }
+
+        if (!email || email.length == 0) {
+          alert('Valid email is required');
+          $('#pledge-form #email').addClass('err');
+          return false;
+        } else {
+          console.log('email checks')
+        }
+
+        return true;
+      }
+    </script>
   </body>
 </html>
