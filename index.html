@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- General Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="Every Vote Counts presents the Pledge To Vote Campaign. Pledge to vote in the 2018 Midterm elections now and we'll help you get set up and ready to vote.">
+    <meta name="keywords" content="EVC, Every, Vote, Counts, Plegde, To, Vote, Yale, Nonprofit, Organization, Club, Politics, Voting, Rights, Suppression">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta property="og:url" content="http://everyvotecounts.info">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Every Vote Counts - Pledge To Vote">
+    <meta property="og:description" content="Every Vote Counts presents the Pledge To Vote Campaign. Pledge to vote in the 2018 Midterm elections now and we'll help you get set up and ready to vote.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="http://everyvotecounts.info/img/social.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="606">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Every Vote Counts - Pledge To Vote">
+    <meta name="twitter:description" content="Every Vote Counts presents the Pledge To Vote Campaign. Pledge to vote in the 2018 Midterm elections now and we'll help you get set up and ready to vote.">
+    <meta name="twitter:image" content="http://everyvotecounts.info/img/social.png">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -15,15 +29,13 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-
-
+    <!-- Title -->
     <title>Pledge To Vote | Every Vote Counts</title>
-
+    <!-- Fonts + Styleshets -->
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,700|Poppins:400,700" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-
+    <!-- Head Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    <script src="./script.js"></script>
   </head>
   <body>
     <div class="nav">
@@ -115,77 +127,6 @@
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"></script>
     <script src='./ext/jquery-serialize.js'></script>
-    <script>
-      // Get the variables
-      var $form = $('form#pledge-form'),
-      url = 'https://script.google.com/macros/s/AKfycbwC7rrSfKt9ntAYyLL4qm7tVdXf6xknIkdQzPa6uqcVNKEBvdK6/exec'
-
-      // Stop the form from submitting
-      $('#pledge-form').on('submit', function(e) {
-        e.preventDefault();
-      })
-
-      // Manually submit the form via button click
-      $('#pledge-form button').on('click', function(e) {
-        e.preventDefault();
-        $('#pledge-form button').text('Submitting...');
-
-        if (!$(this).hasClass('disabled')) {
-          $(this).addClass('disabled');
-
-          var fname = $('#pledge-form #fname').val(),
-          lname = $('#pledge-form #fname').val(),
-          email = $('#pledge-form #email').val(),
-          phone = $('#pledge-form #phone').val();
-
-          if (validateForm(fname, lname, email)) {
-            var jqxhr = $.ajax({
-              url: url,
-              method: "GET",
-              dataType: "json",
-              data: $form.serializeObject()
-            }).success(function() {
-              alert('Thanks for pledging to vote! We will be in touch shortly with more information!');
-              $('#pledge-form button').text('Thanks for pledging!');
-            }
-            );
-          } else {
-            $('#pledge-form button').html('Commit To Vote &rarr;');
-            $(this).removeClass('disabled');
-          }
-        }
-      })
-
-      // Form validation - not strong, but quick and dirty.
-      function validateForm(fname, lname, email) {
-        console.log(fname, lname, email);
-
-        if (!fname || fname.length == 0 || fname == '') {
-          alert('First name is required');
-          $('#pledge-form input').addClass('err');
-          return false;
-        } else {
-          console.log('fname checks')
-        }
-
-        if (!lname || lname.length == 0 || lname == '') {
-          alert('Last name is required');
-          $('#pledge-form input').addClass('err');
-          return false;
-        } else {
-          console.log('lname checks')
-        }
-
-        if (!email || email.length == 0) {
-          alert('Valid email is required');
-          $('#pledge-form input').addClass('err');
-          return false;
-        } else {
-          console.log('email checks')
-        }
-
-        return true;
-      }
-    </script>
+    <script src='./script.js'></script>
   </body>
 </html>
