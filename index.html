@@ -5,6 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
     <title>Pledge To Vote | Every Vote Counts</title>
 
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,700|Poppins:400,700" rel="stylesheet">
@@ -41,7 +53,7 @@
           </div>
           <!-- Title -->
           <div class="title">
-            <h1>I Pledge to Vote in 2018 </h1>
+            <h1>I Pledge to Vote in 2018</h1>
           </div>
           <!-- Divider -->
           <span class="divider"></span>
@@ -62,7 +74,7 @@
         <!-- Right Panel -->
         <div class="panel-wrapper">
           <div class="vote-form-wrapper">
-            <div id="pledge-form" class="vote-form">
+            <form id="pledge-form" class="vote-form">
               <div class="input-wrap">
                 <input id="fname" class="half-input" type="text" name="fname" placeholder="First Name">
                 <input id="lname" class="half-input" type="text" name="lname" placeholder="Last Name">
@@ -76,7 +88,24 @@
               <div class="btn-wrap">
                 <button id="submit-btn" class="button">Commit To Vote &rarr;</button>
               </div>
-            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="footer-wrapper">
+        <div class="footer-text">
+          <p>
+            Every Vote Counts is a student-led, nonpartisan organization dedicated to addressing voter suppression and civic engagement. EVC is 501(c)(4) organization, registered in the state of Connecticut.
+          </p>
+          <div class="footer-links">
+            Join Us on <a href="https://www.facebook.com/YaleEveryVoteCounts/?hc_ref=ARRgff-61YEXzxK8iO-cuHQ8WmCHJBkZAiyFNSM0ipEJkV4nWqbLu0ByHl1o_8FIlnA&fref=nf">Facebook</a>.
+            <br>
+            Copyright &copy; 2018, All Rights Reserved.
+          </div>
+          <div class="author">
+            <a href="https://linkin.com/in/abhinayar">Site designed & developed by Abhi Nayar</a>
           </div>
         </div>
       </div>
@@ -87,11 +116,19 @@
       crossorigin="anonymous"></script>
     <script src='./ext/jquery-serialize.js'></script>
     <script>
-      var $form = $('#pledge-form'),
+      // Get the variables
+      var $form = $('form#pledge-form'),
       url = 'https://script.google.com/macros/s/AKfycbwC7rrSfKt9ntAYyLL4qm7tVdXf6xknIkdQzPa6uqcVNKEBvdK6/exec'
 
+      // Stop the form from submitting
+      $('#pledge-form').on('submit', function(e) {
+        e.preventDefault();
+      })
+
+      // Manually submit the form via button click
       $('#pledge-form button').on('click', function(e) {
         e.preventDefault();
+        $('#pledge-form button').text('Submitting...');
 
         if (!$(this).hasClass('disabled')) {
           $(this).addClass('disabled');
@@ -113,17 +150,19 @@
             }
             );
           } else {
+            $('#pledge-form button').html('Commit To Vote &rarr;');
             $(this).removeClass('disabled');
           }
         }
       })
 
+      // Form validation - not strong, but quick and dirty.
       function validateForm(fname, lname, email) {
         console.log(fname, lname, email);
 
         if (!fname || fname.length == 0 || fname == '') {
           alert('First name is required');
-          $('#pledge-form #fname').addClass('err');
+          $('#pledge-form input').addClass('err');
           return false;
         } else {
           console.log('fname checks')
@@ -131,7 +170,7 @@
 
         if (!lname || lname.length == 0 || lname == '') {
           alert('Last name is required');
-          $('#pledge-form #lname').addClass('err');
+          $('#pledge-form input').addClass('err');
           return false;
         } else {
           console.log('lname checks')
@@ -139,7 +178,7 @@
 
         if (!email || email.length == 0) {
           alert('Valid email is required');
-          $('#pledge-form #email').addClass('err');
+          $('#pledge-form input').addClass('err');
           return false;
         } else {
           console.log('email checks')

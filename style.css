@@ -16,11 +16,15 @@ body {
   background-color: #fafafa;
   color: #000;
   margin: 0;
-  padding: 5px;
-  padding-bottom: 0;
 } @media (min-width: 540px) {
   body {
     font-size: 16px !important;
+  }
+} @media (min-width: 768px) {
+  body {
+    padding: 10px;
+    padding-bottom: 0;
+    background-color: #f0f0f0;
   }
 }
 /* Resets */
@@ -105,7 +109,7 @@ div, span, h1, p, ul, li, a, form, input, button {
   */
   .r-panel {
     padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 45px;
     background-color: #ffffff;
   }
   .r-panel .panel-wrapper {
@@ -132,9 +136,13 @@ div, span, h1, p, ul, li, a, form, input, button {
     margin-bottom: 15px;
     border-radius: 3px;
   }
+  #pledge-form input.err {
+    border-color: #ed1c24;
+  }
   #pledge-form input:focus {
     border-color: #3959a7;
   }
+
   #pledge-form button {
     background-color: #ed1c24;
     outline: none;
@@ -149,11 +157,12 @@ div, span, h1, p, ul, li, a, form, input, button {
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
     border-radius: 5px;
     margin-top: 6px;
-    transition: box-shadow 0.12s ease, margin 0.12s ease;
+    transform: scale(0.95);
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
   }
   #pledge-form button:hover {
-    box-shadow: 2px 0 20px rgba(0,0,0,.5);
-    margin-top: 3px;
+    box-shadow: 0px 3px 14px rgba(0,0,0,.5);
+    transform: scale(1);
     cursor: pointer;
   }
   #pledge-form button.disabled {
@@ -163,12 +172,60 @@ div, span, h1, p, ul, li, a, form, input, button {
   /****************
   Btm Content
   */
+  #footer {
+    display: inline-block;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
+    color: #777;
+  }
+  .footer-wrapper {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .footer-text {
+    max-width: 95%;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 1.6em;
+    word-wrap: break-word;
+  }
+  .footer-links {
+    display: block;
+    margin-top: 15px;
+  }
+  .footer-links a {
+    color: #ed1c24;
+    opacity: 0.6;
+  }
+  .footer-links a:hover {
+    opacity: 1;
+  }
+  .author a {
+    font-size: 8px;
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+  }
 } @media (min-width: 320px) {
 
 } @media (min-width: 440px) {
 
 } @media (min-width: 540px) {
+  /****************
+  general
+  */
+  .hidden-mob {
+    display: block;
+  }
 
+  .subtitle p {
+    max-width: 420px;
+    margin: 0 auto;
+  }
 } @media (min-width: 600px) {
 
 } @media (min-width: 720px) {
@@ -183,6 +240,20 @@ div, span, h1, p, ul, li, a, form, input, button {
     display: inline-block;
     float: left;
     height: 95vh;
+    padding-top: 60px;
+  }
+
+  .l-panel .logo img {
+    max-width: 100px;
+  }
+
+  /* Title */
+  .title h1 {
+    font-size: 46px;
+  }
+
+  .subtitle p {
+    font-size: 16px;
   }
 
   /****************
@@ -193,18 +264,50 @@ div, span, h1, p, ul, li, a, form, input, button {
     display: inline-block;
     float: left;
     height: 95vh;
+    padding-top: 230px;
+  }
+
+  #pledge-form {
+    max-width: 90%;
+    margin: 0 auto;
   }
 
 } @media (min-width: 850px) {
-
+  /* Title */
+  .title h1 {
+    font-size: 52px;
+  }
 } @media (min-width: 920px) {
+  /* Title */
+  .title h1 {
+    font-size: 60px;
+    line-height: 1.3em;
+  }
 
+  .r-panel {
+    padding-top: 230px;
+  }
 } @media (min-width: 992px) {
   /****************
   Left Panel | Top Panel
   */
   .l-panel {
     background-image: url('./img/bg/main_tablet.png');
+  }
+  /* Title */
+  .title h1 {
+    font-size: 66px;
+    line-height: 1.3em;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .subtitle p {
+    max-width: 440px;
+  }
+
+  .divider {
+    margin-bottom: 10px;
   }
 
 } @media (min-width: 1140px) {
@@ -216,9 +319,11 @@ div, span, h1, p, ul, li, a, form, input, button {
   .l-panel {
     background-image: url('./img/bg/main_desktop.png');
   }
-
 } @media (min-width: 1320px) {
 
 } @media (min-width: 1440px) {
-
+  .content {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }
